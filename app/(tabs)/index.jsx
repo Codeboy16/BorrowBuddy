@@ -23,10 +23,38 @@ import Animated,{ FlipInXDown, FlipInXUp} from 'react-native-reanimated';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { useNavigation } from "@react-navigation/native";
+import * as Notifications from 'expo-notifications';
 
 export default function HomeScreen() {
   const [msg, setMsg] = useState(true);
   const navigation = useNavigation();
+
+//Notification Code 
+useEffect(() => {
+  const subscription = Notifications.addNotificationReceivedListener(notification => {
+    console.log('Notification received:', notification);
+  });
+
+  const responseListener = Notifications.addNotificationResponseReceivedListener(response => {
+    console.log('Notification tapped:', response);
+  });
+
+  return () => {
+    subscription.remove();
+    responseListener.remove();
+  };
+}, []);
+  // Function to trigger the local notification
+  const triggerNotification = () => {
+    Notifications.scheduleNotificationAsync({
+      content: {
+        title: "New Notification", // Title of the notification
+        body: "This is An Borrow Buddy Notification", // Body content
+      },
+      trigger: { seconds: 1 }, // Notification will show after 1 second
+    });
+  };
+
   return (
     <ThemedView>
     <ThemedView className="mx-3 mt-5 pt-5">
@@ -50,9 +78,10 @@ export default function HomeScreen() {
           <TextInput
             style={{
               flex: 1,
-              marginHorizontal: 6,
+              marginHorizontal: 2,
+              marginVertical:13,
               borderWidth: 2,
-              height: 48,
+              height: 45,
               borderRadius: 25,
               paddingHorizontal: 15,
               fontSize: 20,
@@ -67,16 +96,21 @@ export default function HomeScreen() {
           {msg ? (
             <Ionicons
               name="notifications-sharp"
-              size={37}
+              size={35}
               color="#cbcbcb"
-              onPress={() => setMsg(false)}
+              onPress={() => {
+                setMsg(false);
+                triggerNotification();
+              }}
             />
           ) : (
             <MaterialIcons
               name="notifications-active"
-              size={37}
+              size={35}
               color="#cbcbcb"
-              onPress={() => setMsg(true)}
+              onPress={() => {
+                setMsg(true);
+                }}
             />
           )}
         </View>

@@ -1,20 +1,27 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, StatusBar } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, StatusBar, ActivityIndicator } from 'react-native';
 import { useRouter } from 'expo-router'; // To handle navigation
 
 const Index = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const router = useRouter(); // This will help in navigation to the tabs
+  const [loader, setLoader] = useState(false);
 
   // Simple login validation (you can extend this)
   const handleLogin = () => {
-    if (username && password) {
+    if (!username || !password) {
+      alert('Please enter both username and password');
+      return;
+    }
+
+    setLoader(true); // Show loader
+    setTimeout(() => {
+      setLoader(false); // Hide loader after a delay (simulating a network request)
+      
       // On successful login, navigate to (tabs)
       router.push('(tabs)');
-    } else {
-      alert('Please enter both username and password');
-    }
+    }, 1000); // Simulating a delay of 1 second for the loader
   };
 
   return (
@@ -48,18 +55,22 @@ const Index = () => {
 
       {/* Login Button */}
       <TouchableOpacity onPress={handleLogin} style={styles.loginButton}>
-        <Text style={styles.loginButtonText}>Login</Text>
+        {
+          loader ? (
+            <ActivityIndicator size="25" color="#FFFFFF" />
+          ) : (
+            <Text style={styles.loginButtonText}>Login</Text>
+          )
+        }
       </TouchableOpacity>
-
       {/* Google Login Button */}
       <TouchableOpacity className="border rounded-full flex flex-row items-center justify-center px-4 py-2">
-  <Image
-    source={require("../assets/images/google.png")}
-    className="w-8 h-8 mr-2" // Add margin-right to separate image and text
-  />
-  <Text className="text-center text-xl font-medium">Login with Google</Text>
-</TouchableOpacity>
-
+        <Image
+          source={require("../assets/images/google.png")}
+          className="w-8 h-8 mr-2" // Add margin-right to separate image and text
+        />
+        <Text className="text-center text-xl font-medium">Login with Google</Text>
+      </TouchableOpacity>
 
       {/* SignUp Button */}
       <TouchableOpacity onPress={() => { router.push('signup'); }} style={styles.signupButton}>

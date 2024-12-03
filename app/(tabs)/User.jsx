@@ -39,12 +39,9 @@ const User = () => {
             roithm_singh@srmus.edu.in
           </ThemedText>
           {/* User Carts Section */}
-          <Animated.View
-            entering={LightSpeedInLeft.delay(10).duration(1000)}
-            className="mt-5"
-          >
+
             <TouchableOpacity
-              className="border rounded-lg mx-6 flex flex-row items-center justify-around py-4 bg-blue-700 border-blue-600"
+              className="border rounded-lg mx-6 flex flex-row items-center justify-around py-4 bg-blue-700 border-blue-600 my-2 mt-5"
               onPress={() => {
                 router.push("../screens/Myprofile");
               }}
@@ -55,12 +52,8 @@ const User = () => {
               </ThemedText>
               <FontAwesome5 name="arrow-right" size={20} color="white" />
             </TouchableOpacity>
-          </Animated.View>
+
           {/* Section 2 */}
-          <Animated.View
-            entering={LightSpeedInRight.delay(10).duration(1000)}
-            className="mt-2"
-          >
             <TouchableOpacity
               className="border rounded-lg mx-6 flex flex-row items-center justify-around py-4 bg-green-700 border-green-600"
               onPress={() => {
@@ -73,14 +66,9 @@ const User = () => {
               </ThemedText>
               <FontAwesome5 name="arrow-right" size={20} color="white" />
             </TouchableOpacity>
-          </Animated.View>
           {/* Section 3 */}
-          <Animated.View
-            entering={LightSpeedInLeft.delay(10).duration(1000)}
-            className="mt-2"
-          >
             <TouchableOpacity
-              className="border rounded-lg mx-6 flex flex-row items-center justify-around py-4 bg-orange-600 border-orange-500"
+              className="border rounded-lg mx-6 flex flex-row items-center justify-around py-4 bg-orange-600 border-orange-500 mt-2"
               onPress={() => {
                 router.push("../screens/Favourite");
               }}
@@ -91,14 +79,9 @@ const User = () => {
               </ThemedText>
               <FontAwesome5 name="arrow-right" size={20} color="white" />
             </TouchableOpacity>
-          </Animated.View>
           {/* Section 4 */}
-          <Animated.View
-            entering={LightSpeedInRight.delay(10).duration(1000)}
-            className="mt-2"
-          >
             <TouchableOpacity
-              className="border rounded-lg mx-6 flex flex-row items-center justify-around py-4 bg-indigo-600 border-indigo-500"
+              className="border rounded-lg mx-6 flex flex-row items-center justify-around py-4 bg-indigo-600 border-indigo-500 my-2"
               onPress={() => {
                 router.push("../screens/Location");
               }}
@@ -109,12 +92,7 @@ const User = () => {
               </ThemedText>
               <FontAwesome5 name="arrow-right" size={20} color="white" />
             </TouchableOpacity>
-          </Animated.View>
           {/* Section 5 */}
-          <Animated.View
-            entering={LightSpeedInLeft.delay(10).duration(1000)}
-            className="mt-2"
-          >
             <View className="border rounded-lg mx-6 flex flex-row items-center justify-around py-4 bg-gray-800 border-gray-700">
               <Feather name="settings" size={25} color="white" />
               <ThemedText className="text-2xl font-semibold mx-2 text-white">
@@ -122,7 +100,6 @@ const User = () => {
               </ThemedText>
               <FontAwesome5 name="arrow-right" size={20} color="white" />
             </View>
-          </Animated.View>
           {/* Logout */}
           <TouchableOpacity
             className="flex flex-row justify-center py-1 mx-6 my-2 rounded-3xl bg-red-600"
