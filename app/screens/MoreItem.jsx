@@ -42,12 +42,12 @@ const MoreItem = () => {
           placeholderTextColor="#cbcbcb"
           autoComplete="off"
           maxLength={25}
-          className="px-4 w-96 my-3 border-white border rounded-xl text-white"
+          className="px-4 w-96 my-3 border-white border rounded-xl text-white h-14"
           onChangeText={handleSearch}
           value={productname}
         />
         {loading ? (
-          <ActivityIndicator size="100" color="#90ee90" />
+          <ActivityIndicator size="100" color="#90ee90" className="my-40"/>
         ) : filteredProducts.length > 0 ? (
           filteredProducts.map((val) => (
             <Moreitem

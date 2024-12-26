@@ -1,4 +1,4 @@
-import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
+import { View, Text, Image, ScrollView, TouchableOpacity, Alert } from "react-native";
 import React, { useState } from "react";
 import AntDesign from "@expo/vector-icons/AntDesign";
 
@@ -20,6 +20,7 @@ const Moreitem = ({title,image,description,price}) => {
           backgroundColor: "#e5e7eb",
           overflow: "hidden",
         }}
+
         className="my-2"
       >
         <View style={{ position: "relative" }}>
